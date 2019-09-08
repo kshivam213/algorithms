@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 
 public class NumberOfPaths {
-
+	
 	public static void main(String args[]) {
 		
 		Scanner scan = new Scanner(System.in);
