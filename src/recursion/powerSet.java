@@ -5,7 +5,7 @@ package recursion;
  * @author shivamkumar
  *
  */
-public class PowerSet {
+public class powerSet {
 
 	public static void main(String args[]) {
 		
@@ -14,17 +14,17 @@ public class PowerSet {
 		String curr="";
 		
 		int len = str.length();
-		powerSet(str, index, curr, len);
+		getPowerSet(str, index, curr, len);
 	}
 	
-	private static void powerSet(String str, int index, String curr, int len) {
+	private static void getPowerSet(String str, int index, String curr, int len) {
 		
 		if(index == len) {
 			System.out.println(curr);
 			return;
 		} 
 		
-		powerSet(str, index+1, curr+str.charAt(index), len);
-		powerSet(str, index+1, curr, len);		
+		getPowerSet(str, index+1, curr+str.charAt(index), len);
+		getPowerSet(str, index+1, curr, len);		
 	}
 }

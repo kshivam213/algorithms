@@ -1,6 +1,6 @@
 package graph;
 
-public class DjskartaAlgorithm {
+public class FindShortestPathFromGivenSource {
 	
 	static final int V= 9;
 	
@@ -66,7 +66,7 @@ public class DjskartaAlgorithm {
                                       { 0, 0, 0, 0, 0, 2, 0, 1, 6 }, 
                                       { 8, 11, 0, 0, 0, 0, 1, 0, 7 }, 
                                       { 0, 0, 2, 0, 0, 0, 6, 7, 0 } }; 
-        DjskartaAlgorithm t = new DjskartaAlgorithm(); 
+        FindShortestPathFromGivenSource t = new FindShortestPathFromGivenSource(); 
         t.dijkstra(graph, 0); 
     } 
 }

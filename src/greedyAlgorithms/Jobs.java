@@ -1,4 +1,4 @@
-package greedy;
+package greedyAlgorithms;
 
 public class Jobs {
 
