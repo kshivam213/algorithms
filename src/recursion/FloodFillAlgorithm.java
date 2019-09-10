@@ -2,6 +2,7 @@ package recursion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Algorithm to fill color in all adjacent starting from x,y excluding diagonal elements
@@ -22,7 +23,7 @@ public class FloodFillAlgorithm {
 
 		System.out.println(list);
 		
-		/*Scanner scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		int T = scan.nextInt();
 		
 		for(int i=0;i<T;i++) {
@@ -52,7 +53,7 @@ public class FloodFillAlgorithm {
 				}
 			}
 		}
-		scan.close();*/
+		scan.close();
 	}
 	
 	private static void changeArrValue(List<Integer> list) {
