@@ -1,115 +1,143 @@
 package linkedList;
 
 public class CustomSinglyLinkedList {
-
-	Node head;
-	Node end;
-	static class Node{
+	
+	
+	class Node{
 		int data;
 		Node next;
 		
 		Node(int data){
-			this.data = data;
-			next = null;
+			this.data= data;
+			this.next = null;
 		}
 	}
 	
-	public void add(int data) {
-		
-		Node new_node = new Node(data);
-		new_node.next = head;
-		head = new_node;
-	}
+	Node head = null;
+	Node last = null;
 	
-	public void addLast(int data) {
+	public void addBefore(int data) {
 		
-		Node new_node = new Node(data);
-		new_node.next= null;
-		
+		Node newNode  = new Node(data);
 		if(head == null) {
-			end = head = new_node;
+			head= newNode;
 		}else {
-			end.next = new_node;
-			end =  new_node;
+			newNode.next = head;
+			head = newNode;
 		}
 	}
 	
-	public void addAfter(int index, int data) {
+	public void addAfter(int data) {
 		
-		Node new_Node= new Node(data);
-		Node temp = head;
-		for(int i=0;i<index;i++)
-		{
-			temp = temp.next;
+		Node newNode= new Node(data);
+		if(head == null) {
+			head = last = newNode;
+		}else {
+			last.next = newNode;
+			last = newNode;
 		}
-		
-		new_Node.next = temp.next;
-		temp.next = new_Node;
-	}
-	
-	public void remove(int key) {
-		
-		Node tmp= head;
-		
-		if(tmp != null && tmp.data== key) {
-			head = tmp.next;
-			return;
-		}
-		
-		Node prev= head;
-		while(tmp != null && tmp.data != key) {
-			prev = tmp;
-			tmp = tmp.next;
-		}
-		
-		if(tmp == null)
-			return;
-		
-		prev.next = tmp.next;
-	}
-	
-	public void reverseLinkedList() {
-		
-		Node current = head;
-		Node prev= null;
-		Node next= null;
-		
-		while(current != null) {
-			
-			next = current.next;
-			current.next = prev;
-			prev = current;
-			current = next;
-		}
-		
-		head = prev;
-	}
-	
-	public boolean checkLoop() {
-		
-		Node slow_pointer = head;
-		Node fast_pointer = head;
-		boolean isLoop = false;
-		
-		while(fast_pointer.next != null && fast_pointer != null && slow_pointer != null) {
-			
-			slow_pointer = slow_pointer.next;
-			fast_pointer = fast_pointer.next.next;
-			
-			if(slow_pointer == fast_pointer) {
-				isLoop = true;
-			}
-		}
-		
-		return isLoop;
 	}
 	
 	public void display() {
 		
 		Node temp = head;
 		while(temp != null) {
+			
 			System.out.print(temp.data+" ");
-			temp = temp.next;
+			temp= temp.next;
 		}
+	}
+	
+	public void addMid(int data) {
+		
+		Node newNode= new Node(data);
+		Node temp = head;
+		int len = 0;
+		while(temp != null) {
+			temp = temp.next;
+			len++;
+		}
+		
+		int i =0;
+		int count= 0;
+		if(len %2==0) {
+			count = (len/2) -1;
+		}else {
+			count = (len/2);
+		}
+		temp = head;
+		while(i< count) {
+			temp = temp.next;
+			i++;
+		}
+		
+		newNode.next = temp.next;
+		temp.next= newNode;
+	}
+	
+	public void removeStart() {
+		
+		if(head == null) {
+			System.out.println("No Data found");
+		}
+		
+		head = head.next;
+		return;
+	}
+	
+	public void remove(int data) {
+		
+		if(head == null) {
+			System.out.println("No data found ..");
+		}else {
+			Node temp = head, prev=null;
+			if(temp.data == data) {
+				head  = temp.next;
+				return;
+			}
+			
+		
+			while(temp != null && temp.data != data) {
+				
+				prev = temp;
+				temp = temp.next;
+			}
+			
+			if(temp == null) 
+				return;
+			
+			prev.next = temp.next;
+		}
+	}
+	
+	public void reverseLinkedList() {
+		
+		Node prev= null;
+		Node curr= head, next= head;
+		
+		while(curr != null) {
+			next = curr.next;
+			curr.next = prev;
+			prev= curr;
+			curr = next;
+		}
+		
+		head = prev;
+	}
+	
+	public static void main(String args[]) {
+		
+		CustomSinglyLinkedList list = new CustomSinglyLinkedList();
+		list.addAfter(3);
+		list.addAfter(4);
+		list.addAfter(5);
+		list.addAfter(7);
+		list.addAfter(8);
+		
+		list.display();
+		
+		list.reverseLinkedList();
+		System.out.println();
+		list.display();
 	}
 }

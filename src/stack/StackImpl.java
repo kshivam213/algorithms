@@ -1,6 +1,6 @@
 package stack;
 
-public class Stack {
+public class StackImpl {
 
 	static final int MAX= 1000;
 	
@@ -31,5 +31,15 @@ public class Stack {
 		}else {
 			return a[top--];
 		}
+	}
+	
+   public static void main(String args[]) {
+		
+		StackImpl stack = new StackImpl();
+		stack.push(3);
+		stack.push(4);
+		stack.push(5);
+		
+		System.out.println(stack.pop());
 	}
 }

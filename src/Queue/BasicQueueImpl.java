@@ -6,13 +6,13 @@ package Queue;
  * @author shivamkumar
  *
  */
-public class BasicQueue {
+public class BasicQueueImpl {
 
 	int front,rear,size;
 	int capacity;
 	int array[];
 	
-	public BasicQueue(int cap) {
+	public BasicQueueImpl(int cap) {
 		
 		this.capacity = cap;
 		front = this.size = 0;
@@ -52,7 +52,7 @@ public class BasicQueue {
 		return item;
 	}
 	
-	int front() {
+	int getFront() {
 		if(isEmpty())
 			return Integer.MIN_VALUE;
 		
@@ -60,7 +60,7 @@ public class BasicQueue {
 	}
 	
 	
-	int rear() {
+	int getRear() {
 		
 		if(isEmpty()) {
 			return Integer.MIN_VALUE;
@@ -78,22 +78,5 @@ public class BasicQueue {
 			i = (i+1) % this.capacity;
 		}
 		System.out.print(this.array[i]);
-	}
-	
-	public static void main(String args[]) {
-		
-		BasicQueue bq = new BasicQueue(5);
-		
-		bq.enqueue(4);
-		bq.enqueue(5);
-		bq.enqueue(2);
-		bq.enqueue(9);
-		bq.enqueue(8);
-		
-		bq.dequeue();
-		
-		bq.enqueue(10);
-		
-		bq.printQueue();
 	}
 }
