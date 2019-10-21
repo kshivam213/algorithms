@@ -7,19 +7,6 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.TreeMap;
 
-class Node{
-	
-	Node left;
-	int data;
-	int hd;
-	Node right;
-	
-	Node(int data){
-		this.data = data;
-		left = right = null;
-		hd =0;
-	}
-}
 
 public class CustomBinaryTree {
 
@@ -119,14 +106,13 @@ public class CustomBinaryTree {
 		queue.add(root);
 		
 		Node temp= null;
-		Node key_node= null;
+		Node keyNode= null;
+		
 		while(!queue.isEmpty()) {
 		
-			temp = queue.peek();
-			queue.remove();
-			
+			temp = queue.poll();
 			if(temp.data == key) {
-				key_node = temp;
+				keyNode = temp;
 			}
 			
 			if(temp.left != null) {
@@ -135,27 +121,25 @@ public class CustomBinaryTree {
 			
 			if(temp.right != null) {
 				queue.add(temp.right);
-			}	
+			}
 		}
 		
-		int x = temp.data;
+		int x= temp.data;
 		deleteDeepest(root, temp);
-		key_node.data = x;
+		keyNode.data = x;
 	}
 	
 	private void deleteDeepest(Node root2, Node temp) {
 		 
-		Queue<Node> q = new LinkedList<Node>();
+		Queue<Node> q = new LinkedList<>();
 		q.add(root);
 		
 		while(!q.isEmpty()) {
 			
-			Node tmp = q.peek();
-			q.remove();
-		
-			if(tmp.left != null) {
+			Node tmp = q.poll();
+			
+			if(tmp.left!= null) {
 				if(tmp.left == temp) {
-					tmp.left = null;
 					temp = null;
 					return;
 				}else {
@@ -165,13 +149,12 @@ public class CustomBinaryTree {
 			
 			if(tmp.right != null) {
 				if(tmp.right == temp) {
-					tmp.right = null;
 					temp = null;
 					return;
 				}else {
 					q.add(tmp.right);
 				}
-			}	
+			}
 		}
 	}
 

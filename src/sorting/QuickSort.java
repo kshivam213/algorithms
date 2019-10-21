@@ -1,10 +1,12 @@
 package sorting;
 
+import java.util.Arrays;
+
 public class QuickSort {
 
 	public static void main(String args[]) {
 		
-		int arr[] = {12,4,5,6,9,11};
+		int arr[] = {2,1,3,9,7,6};
 		quickSort(arr, 0, arr.length-1);
 		
 		for(int i=0;i<arr.length;i++) {
@@ -29,9 +31,9 @@ public class QuickSort {
 		
 		int pIndex = (st-1);
 		
-		for(int i=0;i<=en-1;i++) {
+		for(int i=st;i<en;i++) {
 			
-			if(arr[i] < pivot) {
+			if(arr[i] <= pivot) {
 				pIndex++;
 				int temp = arr[pIndex];
 				arr[pIndex] = arr[i];
@@ -42,6 +44,8 @@ public class QuickSort {
 		int temp = arr[pIndex+1];
 		arr[pIndex+1]= arr[en];
 		arr[en]= temp;
+		
+		System.out.println(Arrays.toString(arr));
 		
 		return pIndex+1;	
 	}
